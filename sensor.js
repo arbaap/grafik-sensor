@@ -65,6 +65,13 @@ app.get("/ambildata", async (req, res) => {
   }
 });
 
+app.get("/", async (req, res, next) => {
+  return res.status(200).json({
+    title: "Express Testing",
+    message: "The app is working properly!",
+  });
+});
+
 // Menjalankan server pada port tertentu
 const port = 3000;
 app.listen(port, () => {
