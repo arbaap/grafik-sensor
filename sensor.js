@@ -27,12 +27,20 @@ const sensorSchema = new mongoose.Schema({
 
 const Sensor = mongoose.model("Sensor", sensorSchema);
 
+const sensortestSchema = new mongoose.Schema({
+  suhu: Number,
+  kelembaban: Number,
+  NH3: Number,
+});
+
+const SensorTest = mongoose.model("SensorTest", sensorSchema);
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
 app.post("/kirimdata", async (req, res) => {
-  const { suhu, kelembaban, NH3 } = req.body;
+  const { suhu, kelembaban } = req.body;
 
   const newSensor = new Sensor({
     suhu: suhu,
@@ -52,14 +60,14 @@ app.post("/kirimdata", async (req, res) => {
 app.post("/kirimdatatest", async (req, res) => {
   const { suhu, kelembaban, NH3 } = req.body;
 
-  const newSensor = new SensorTest({
+  const newSensorTest = new SensorTest({
     suhu: suhu,
     kelembaban: kelembaban,
     NH3: NH3,
   });
 
   try {
-    const result = await newSensor.save();
+    const result = await newSensorTest.save();
     console.log("Berhasil menyimpan data sensor test:", result);
     res.status(200).json({ message: "Berhasil menyimpan data sensor" });
   } catch (err) {
