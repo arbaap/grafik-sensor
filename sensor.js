@@ -33,7 +33,7 @@ const sensortestSchema = new mongoose.Schema({
   NH3: Number,
 });
 
-const SensorTest = mongoose.model("SensorTest", sensorSchema);
+const SensorTest = mongoose.model("SensorTest", sensortestSchema);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
