@@ -69,7 +69,7 @@ app.post("/kirimdatatest", async (req, res) => {
   try {
     const result = await newSensorTest.save();
     console.log("Berhasil menyimpan data sensor test:", result);
-    res.status(200).json({ message: "Berhasil menyimpan data sensor" });
+    res.status(200).json({ message: "Berhasil menyimpan data sensor test" });
   } catch (err) {
     console.log("Gagal menyimpan data sensor:", err);
     res.status(500).json({ message: "Gagal menyimpan data sensor" });
