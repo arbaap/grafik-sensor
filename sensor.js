@@ -27,11 +27,16 @@ const sensorSchema = new mongoose.Schema({
 
 const Sensor = mongoose.model("Sensor", sensorSchema);
 
-const sensortestSchema = new mongoose.Schema({
-  suhu: Number,
-  kelembaban: Number,
-  NH3: Number,
-});
+const sensortestSchema = new mongoose.Schema(
+  {
+    suhu: Number,
+    kelembaban: Number,
+    NH3: Number,
+  },
+  {
+    timestamps: true,
+  }
+);
 
 const SensorTest = mongoose.model("SensorTest", sensortestSchema);
 
@@ -59,6 +64,8 @@ app.post("/kirimdata", async (req, res) => {
 
 app.post("/kirimdatatest", async (req, res) => {
   const { suhu, kelembaban, NH3 } = req.body;
+
+  const timestamp = new Date();
 
   const newSensorTest = new SensorTest({
     suhu: suhu,
