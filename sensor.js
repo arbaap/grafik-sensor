@@ -1,10 +1,12 @@
 const express = require("express");
 
-const app = express();
-
 const dbConfig = require("./mongoDB");
 
 const sensorRoute = require("./routes/sensorRoute");
+
+const app = express();
+
+app.use(cors());
 
 app.use(express.json());
 
